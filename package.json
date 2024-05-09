@@ -16,7 +16,10 @@
   "devDependencies": {
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.11",
-    "rimraf": "^5.0.5",
-    "allure-playwright": "^2.15.1"
+    "allure-playwright": "^2.15.1",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.9.0"
   }
 }
