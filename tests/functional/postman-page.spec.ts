@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { PostmanPage } from '../../pages/PostmanPage';
-import { MediumPage } from '../../pages/MediumPage';
+import { PostmanPage } from './pages/PostmanPage';
+import { MediumPage } from './pages/MediumPage';
 
 test('Verify postman page has title', { 
   tag: ['@regression', '@ui'], 
