@@ -1,15 +1,7 @@
-pipeline {
-  agent {
-    kubernetes {
-      yamlFile 'deployments/k8s/jenkins/inbound-pod.yaml'
-      retries 2
-    }
-  }
-  stages {
-    stage('Setup') {
-      steps {
-        sh 'Hello World!'
-      }
+podTemplate {
+  node(POD_LABEL) {
+    stage('Run shell') {
+      sh 'echo hello world'
     }
   }
 }
