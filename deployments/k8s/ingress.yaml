@@ -27,4 +27,4 @@ metadata:
   namespace: ingress-nginx
 spec:
   type: ExternalName
-  externalName: jenkins-service.devops-tools
+  externalName: jenkins.devops-tools
