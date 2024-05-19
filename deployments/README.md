@@ -44,3 +44,13 @@ kubectl exec -n devops-tools -it svc/jenkins -c jenkins -- cat /run/secrets/addi
 ```
 
 - Login with the password from above step and the username `admin`.
+
+### Multiple docker containers
+To use custom docker files inside our Jenkins pipeline, we customize our `Dockerfile.app` inside the `docker` directory. To publish to docker hub, you must follow the following:
+```bash
+docker build --no-cache -t automation:v0.0.1 -f Dockerfile.app .
+docker tag automation:v0.0.1 ivanandraschko/automation:v0.0.1 
+docker push ivanandraschko/automation:v0.0.1
+```
+
+Then inside the `k8s` directory we add our public image within the `app.yaml` file.
