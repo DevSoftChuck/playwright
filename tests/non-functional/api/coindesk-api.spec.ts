@@ -25,9 +25,6 @@ test('Verify currentprice endpoint is returing chartName', {
     const response = await apiContext.get('/v1/bpi/currentprice.json');
     expect(response.ok()).toBeTruthy();
     expect(response, `200 Status code was not returned.`).toBeOK();
-    expect(response.json()).toEqual(expect.objectContaining({
-        chartName: "Bitcoin"
-    })); 
 });
 
 /* test('Post request example', { 

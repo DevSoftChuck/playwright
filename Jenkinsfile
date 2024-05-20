@@ -16,6 +16,16 @@ pipeline {
       defaultValue: false, 
       description: "Do you want to run performance tests?"
     )
+    booleanParam(
+      name: 'RUN_PLAYWRIGHT_TEST',
+      defaultValue: false, 
+      description: "Do you want to run playwright tests?"
+    )
+    choice(
+      name: 'TAG', 
+      choices: ['regression', 'smoke', 'sanity', 'ui', 'api', 'axe'], 
+      description: 'run tests that have a particular tag.'
+    )
   }
 
   stages {
@@ -31,8 +41,22 @@ pipeline {
         }
       }
     } */
-    
-    stage('Fuzzy-API-Test') {
+
+    stage('Playwright-Test') {
+      when {
+        expression { params.RUN_PLAYWRIGHT_TEST } 
+      }
+      steps {
+        container('app'){
+          sh """
+            npm install --silent > '/dev/null' 2>&1
+            npx playwright test --grep @${params.TAG}
+          """
+        }
+      }
+    }
+
+    stage('Fuzzy-Api-Test') {
       when {
         expression { params.RUN_FUZZY_API_TEST } 
       }
