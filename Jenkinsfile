@@ -34,6 +34,7 @@ pipeline {
         container('app') {
           sh '''
             pip install -q schemathesis --break-system-packages
+            npm install --silent > '/dev/null' 2>&1
           '''
         }
         container('golang') {

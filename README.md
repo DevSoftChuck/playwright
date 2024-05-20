@@ -5,11 +5,24 @@
 
 Welcome to my repository, here you will find a ready to use test automation project using Typescript and Playwright. I also try to build a complete pipeline that performs ui, mobile, api, accessibility, performance and security testing.
 
-## ⚡ Quick Start
-TODO
+## ⚡ Setup
+
+- Install project dependencies `npm install --silent`.
+- Install `k6`, [here](https://grafana.com/docs/k6/latest/set-up/install-k6/) is the official documentation.
+- Install Kubernetes and Jenkins, [here](./deployments/README.md) is a complete guide.
 
 ## 🚀 Documentation
-TODO
+### Project Structure
+- **`deployments`**: System and container orchestration deployment configurations and templates (docker, kubernetes/helm, jenkins).
+- **`configs`**: Configuration file templates or default configs. 
+- **`tests`**: All test cases. Test cases are divided into two categories: `functional` (UI test cases) and `non-functional` (api, performance, accessibility and security test cases).
+
+### Test Stages in Pipeline
+
+There are three stages right now:
+- **Playwright-Test**: Here all playwright test cases will run, by default is set to `regression`.
+- **Fuzzy-Api-Test**:  `schemathesis` is used to perform fuzzy api testing, it needs the api schema to run the test. By default a test schema is used.
+- **Performance-Test**: `k6` is used to run performance test, all related test cases are placed inside `tests/non-functional/performance/` directory.
 
 ## 🤖 Tech stack
 - [Typescript](https://www.typescriptlang.org/) as the programing language.
