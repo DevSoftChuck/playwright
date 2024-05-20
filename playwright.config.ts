@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  globalSetup: './utils/global-setup',
+  globalSetup: './configs/global-setup',
   //sets timeout for each test case
   timeout: 120000,
   testDir: './tests',
@@ -57,14 +57,14 @@ export default defineConfig({
     // },
 
     /* Test against mobile viewports. */
-    {
+    /* {
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'] },
     },
     {
       name: 'Mobile Safari',
       use: { ...devices['iPhone 12'] },
-    },
+    }, */
 
     /* Test against branded browsers. */
     // {

@@ -4,7 +4,8 @@
 <hr>
 
 ## Getting Started
-- Install [minikube](https://minikube.sigs.k8s.io/docs/start/#take-the-next-step):
+- Install [minikube](https://minikube.sigs.k8s.io/docs/start/#take-the-next-step).
+- Create a local cluster:
 ```bash
 minikube start --memory 10240 --cpus 12
 ```
