@@ -33,9 +33,10 @@ helm install jenkins jenkins/jenkins -n devops-tools
 kubectl apply -f ingress.yaml
 ```
 
-- Configure your hostname to kubernetes cluster:
+- Configure your hostname to Kubernetes cluster:
 ```bash
-sudo echo "$(minikube ip)   testing.com" | sudo tee -a /etc/hosts
+sudo echo "$(minikube ip)   jenkins.testing.com" | sudo tee -a /etc/hosts
+sudo echo "$(minikube ip)   dashboard.testing.com" | sudo tee -a /etc/hosts
 ```
 > That command will do the job but I recommend doing it manually.
 
@@ -49,9 +50,9 @@ kubectl exec -n devops-tools -it svc/jenkins -c jenkins -- cat /run/secrets/addi
 ### Multiple docker containers
 To use custom docker files inside our Jenkins pipeline, we customize our `Dockerfile.app` inside the `docker` directory. To publish to docker hub, you must follow the following:
 ```bash
-docker build --no-cache -t automation:v0.0.1 -f Dockerfile.app .
-docker tag automation:v0.0.1 ivanandraschko/automation:v0.0.1 
-docker push ivanandraschko/automation:v0.0.1
+docker build --no-cache -t automation:latest -f Dockerfile.app .
+docker tag automation:latest ivanandraschko/automation:latest 
+docker push ivanandraschko/automation:latest
 ```
 
 Then inside the `k8s` directory we add our public image within the `app.yaml` file.
